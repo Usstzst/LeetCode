@@ -6,7 +6,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TestRunnerService">
+<<<<<<< HEAD
     <option name="projectConfiguration" value="pytest" />
     <option name="PROJECT_TEST_RUNNER" value="pytest" />
+=======
+    <option name="PROJECT_TEST_RUNNER" value="Unittests" />
+>>>>>>> 60f8ce35a0906044376f50db0321e86a2d57a297
   </component>
 </module>
