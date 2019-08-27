@@ -7,8 +7,6 @@
 # @Software: PyCharm
 
 
-
-
 def find(C, T):
     res = []
     for i in range(len(C)):
