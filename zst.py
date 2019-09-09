@@ -183,18 +183,189 @@
 
 '''和为S的所有子集'''
 
-def PowerSetsRecursive2(items):
-    # the power set of the empty set has one element, the empty set
-    result = [[]]
-    for x in items:
-        result.extend([subset + [x] for subset in result])
-    return result
+# def PowerSetsRecursive2(items):
+#     # the power set of the empty set has one element, the empty set
+#     result = [[]]
+#     for x in items:
+#         result.extend([subset + [x] for subset in result])
+#     return result
+#
+#
+#
+# result = PowerSetsRecursive2([1,2,2,3,5])
+# res = []
+# for i in range(len(result)):
+#     if sum(result[i])== 5 and result[i] not in res:
+#         res.append(result[i])
+# print(res)
+#
 
 
 
-result = PowerSetsRecursive2([1,2,2,3,5])
-res = []
-for i in range(len(result)):
-    if sum(result[i])== 5 and result[i] not in res:
-        res.append(result[i])
-print(res)
+
+'''美团笔试一：找最长公共前缀'''
+# def find_lcsubstr(s1, s2):
+#     m = min(len(s1), len(s2))
+#     cnt = 0
+#     for i in range(m):
+#         if s1[i]==s2[i]:
+#             cnt += 1
+#         else:
+#             break
+#     return cnt
+#
+#
+# if __name__ == '__main__':
+#     n = int(input())
+#     listA = list(input().split(','))
+#     print(listA)
+#     while True:
+#         a, b = [i for i in list(map(int,input().split()))]
+#         if a<0 or b<0 or a>n or b>n:
+#             continue
+#         print(find_lcsubstr(listA[a-1], listA[b-1]))
+#
+
+'''美团笔试二：逆序排列字符串'''
+# def compare(s1, s2):
+#     if not s1:
+#         return True
+#     if not s2:
+#         return False
+#     for i in range(min(len(s1), len(s2))):
+#         if ord(s1[i])>ord(s2[i]):
+#             return True
+#         elif ord(s1[i])<ord(s2[i]):
+#             return False
+#     return True if len(s1) < len(s2) else False
+#
+#
+#
+# def quick(nums):
+#     if not nums:
+#         return []
+#     curr = nums[0]
+#     left = quick([i for i in nums[1:] if not compare(i, curr)])
+#     right = quick([i for i in nums[1:] if compare(i, curr)])
+#     return left + [curr] + right
+#
+#
+# if __name__ == '__main__':
+#     listA = input().split(',')
+#     res = quick(listA)
+#     print(','.join(res[::-1]))
+
+# import copy
+# def solve(array):
+#     if len(set(array))==len(array):
+#         return 'YES'
+#     if len(array)%2!=0:
+#         return 'NO'
+#
+#     for i in range(1, len(array)):
+#         if array[0]!= array[j]:
+#             array.pop(0)
+#             array.pop(i)
+#
+#
+#
+#
+#
+#
+#
+# if __name__ == '__main__':
+#     T = int(input())
+#     for i in range(T):
+#         n = int(input())
+#         array = [int(i) for i in input().split()]
+#
+#
+
+
+# def count1(num):
+#     cnt = 0
+#     while num > 0:
+#         if num & 1 == 1:
+#             cnt += 1
+#         num >>= 1
+#     return cnt
+#
+#
+# if __name__ == '__main__':
+#     #num = int(input())
+#     # binary = bin(num).replace('0b', '')
+#     #print(count1(num))
+#     a = 2/2.00
+#     print(a)
+
+
+# import decimal
+# def solve(xs, k):
+#     res = ''
+#     n = len(xs)
+#     for i in range(n-k+1):
+#         s = sum(xs[i:i + k])
+#         b = str(decimal.Decimal('%.2f'%float(s/k)))
+#         res+=b+' '
+#     return res
+#
+#
+# if __name__ == '__main__':
+#     xs = list(map(int, input().split()))
+#     k = int(input())
+#     print(solve(xs, k))
+
+
+# def KS(res, N, cnt0_all, cnt1_all):
+#     dp0 = [0] * (N + 1)
+#     dp1 = [0] * (N + 1)
+#     result = []
+#     cnt0, cnt1 = 0, 0
+#     for i in range(N):
+#         if res[i][1] == 0:
+#             cnt0 += 1
+#             dp0[i + 1] = cnt0 / cnt0_all
+#             dp1[i + 1] = dp1[i]
+#         else:
+#             cnt1 += 1
+#             dp1[i + 1] = cnt1 / cnt1_all
+#             dp0[i + 1] = dp0[i]
+#     for i in range(len(dp0)):
+#         result.append(abs(dp0[i]-dp1[i]))
+#     return max(result)
+#
+#
+# if __name__ == '__main__':
+#     N = int(input())
+#     res = [[0] * 2 for _ in range(N)]
+#     cnt1_all, cnt0_all = 0, 0
+#     for i in range(N):
+#         res[i][0], res[i][1] = [float(x) for x in input().split()]
+#         if res[i][1] == 1:
+#             cnt1_all += 1
+#         else:
+#             cnt0_all += 1
+#     res.sort()
+#     print(KS(res, N, cnt0_all, cnt1_all))
+#
+#
+
+
+def bag(n, c, w, v):
+    value = [[0 for j in range(c+1)] for i in range(n + 1)]
+    for i in range(1, n + 1):
+        for j in range(1, c + 1):
+            value[i][j] = value[i - 1][j]
+            if j >= w[i - 1] and value[i][j] < value[i - 1][j - w[i]] + v[i-1]:
+                value[i][j] = value[i - 1][j - w[i]] + v[i-1]
+    return value[-1][-1]
+
+
+if __name__ == '__main__':
+    n, c = [int(i) for i in input().split()]
+    w, v = [], []
+    for i in range(n):
+        a, b = [int(j) for j in input().split()]
+        w.append(a)
+        v.append(b)
+    print(bag(n, c, w, v))

@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+<<<<<<< HEAD
 # -*- coding: utf-8 -*-
 # @Time    : 2019/8/25 0025 16:04
 # @Author  : Julianna
@@ -75,4 +76,13 @@ if __name__ == '__main__':
     for i in range(len(M)):
         print(M[i])
 
+=======
+# encoding: utf-8
+#@author: Julianna
+#@software: pycharm
+#@file: test.py
+#@time: 2019-09-04 20:47
+
+
+>>>>>>> leetcode
 
