@@ -351,21 +351,81 @@
 #
 
 
-def bag(n, c, w, v):
-    value = [[0 for j in range(c+1)] for i in range(n + 1)]
-    for i in range(1, n + 1):
-        for j in range(1, c + 1):
-            value[i][j] = value[i - 1][j]
-            if j >= w[i - 1] and value[i][j] < value[i - 1][j - w[i]] + v[i-1]:
-                value[i][j] = value[i - 1][j - w[i]] + v[i-1]
-    return value[-1][-1]
+# def bag(n, c, w, v):
+#     value = [[0 for j in range(c+1)] for i in range(n + 1)]
+#     for i in range(1, n + 1):
+#         for j in range(1, c + 1):
+#             value[i][j] = value[i - 1][j]
+#             if j >= w[i - 1] and value[i][j] < value[i - 1][j - w[i]] + v[i-1]:
+#                 value[i][j] = value[i - 1][j - w[i]] + v[i-1]
+#     return value[-1][-1]
+#
+#
+# if __name__ == '__main__':
+#     n, c = [int(i) for i in input().split()]
+#     w, v = [], []
+#     for i in range(n):
+#         a, b = [int(j) for j in input().split()]
+#         w.append(a)
+#         v.append(b)
+#     print(bag(n, c, w, v))
 
 
-if __name__ == '__main__':
-    n, c = [int(i) for i in input().split()]
-    w, v = [], []
-    for i in range(n):
-        a, b = [int(j) for j in input().split()]
-        w.append(a)
-        v.append(b)
-    print(bag(n, c, w, v))
+# def maxProfit(prices):
+#     n = len(prices)
+#     if n < 2:
+#         return 0
+#     pre_max_profit = [0 for i in range(n)]
+#     pro_max_profit = [0 for i in range(n)]
+#     max_profit = 0
+#     pre_min_buy = prices[0]
+#
+#     for i in range(1, n):
+#         pre_min_buy = min(pre_min_buy, prices[i])
+#         pre_max_profit[i] = max(pre_max_profit[i - 1], prices[i] - pre_min_buy)
+#     print(pre_max_profit)
+#
+#     pro_max_sell = prices[n - 1]
+#     for k in range(n - 2, -1, -1):
+#         pro_max_sell = max(prices[k], pro_max_sell)
+#         pro_max_profit[k] = max(pro_max_profit[k + 1], pro_max_sell - prices[k])
+#
+#     print(pro_max_profit)
+#
+#     for j in range(0, n):
+#         max_profit = max(max_profit, pre_max_profit[j] + pro_max_profit[j])
+#     return max_profit
+#
+#
+# if __name__ == '__main__':
+#     prices = list(map(int, input().split()))
+#     print(maxProfit(prices))
+
+
+# def candy(ratings):
+#
+#     if ratings == None:
+#         return 0
+#     lenth = len(ratings)
+#     dp = [1 for i in range(lenth)]
+#     sum = 0
+#     for i in range(1, len(ratings)):
+#         if ratings[i] > ratings[i - 1]:
+#             dp[i] = dp[i - 1] + 1
+#     for i in range(len(ratings) - 2, -1, -1):
+#         if ratings[i] > ratings[i + 1] and dp[i] <= dp[i + 1]:
+#             dp[i] = dp[i + 1] + 1
+#     for i in range(lenth):
+#         sum += dp[i]
+#     return sum
+#
+#
+# if __name__ == '__main__':
+#     n = int(input())
+#     arr = []
+#     for i in range(n):
+#         a = int(input())
+#         arr.append(a)
+#     print(candy(arr))
+
+
