@@ -21,37 +21,10 @@
 
 
 
-'''排列组合'''
-# def perm(a,b):
-#     # 这里是递归函数的出口，为什么呢，因为这里表示：一个长度为1的字符串，它的排列组合就是它自己。
-#     if len(s) <= 1:
-#         return [s]
-#     sl = []  # 保存字符串的所有可能排列组合
-#     for i in range(len(s)):  # 这个循环，对应 解题思路1）确定字符串的第一个字母是谁，有n种可能（n为字符串s的长度
-#         for j in perm(s[0:i] + s[i + 1:]):  # 这个循环，对应 解题思路2）进入递归，s[0:i]+s[i+1:]的意思就是把s中的s[i]给去掉
-#             sl.append(s[i] + j)  # 对应 解题思路2）问题就从“返回字符串中的字母排列组合” **变成了** “返回 第一个字母+除去第一个字母外的字符串的排列组合”
-#     return sl
+
 #
 #
 #
-# def perm(s1,s2):
-#     result = []
-#     for i in range(len(s1)):
-#         for j in range(s2):
-#             result.append(s1[i]+j)
-#     return result
-#
-#
-# def main():
-#     perm_nums = perm('abc')  # 有可能存在字母相同的情况
-#     no_repeat_nums = list(set(perm_nums))  # 去重，挺牛的，这个代码
-#     print('perm_nums', len(perm_nums), perm_nums)
-#     print('no_repeat_nums', len(no_repeat_nums), no_repeat_nums)
-#     pass
-#
-#
-# if __name__ == '__main__':
-#     main()
 
 
 # def perm(a, b):
@@ -90,9 +63,9 @@
 #     for i in range(2,len(res)):
 #         result = perm(result, res[i])
 #     return result
-
-
-
+#
+#
+#
 # if __name__ == '__main__':
 #     dic = {1: 'abc', 2: 'def', 3: 'ghi', 4: 'jkl', 5: 'mno', 6: 'pqr', 7: 'stu', 8: 'vwx', 9: 'yz'}
 #     s = input()
@@ -101,7 +74,7 @@
 #         res.append(dic[int(i)])
 #     res = perm2(res)
 #     print(' '.join(res))
-#
+
 
 
 # def calculate(self, s):
@@ -178,6 +151,7 @@
 #     s = input().strip()
 #     res = all_sub_string(s)
 #     print(len(res))
+
 
 
 
@@ -427,5 +401,49 @@
 #         a = int(input())
 #         arr.append(a)
 #     print(candy(arr))
+
+
+# if __name__ == '__main__':
+#     n, m = [int(i) for i in input().split()]
+#     arr = []
+#     for i in range(n):
+#         a, b = [int(j) for j in input().split()]
+#         arr.append((a, b))
+#     ball = []
+#     for i in range(m):
+#         ball.append(int(input()))
+#
+#     cnt = 0
+#     while arr:
+#         i = 0
+#         for b in ball:
+#             if b>=arr[i][0] and b<=arr[i][1]:
+#                 cnt +=1
+#                 del arr[i]
+#             else:
+#                 i+=1
+#     print(cnt)
+
+'''排列组合'''
+def perm(s):
+
+    if len(s) <= 1:
+        return [s]
+    sl = []  # 保存字符串的所有可能排列组合
+    for i in range(len(s)):
+        for j in perm(s[0:i] + s[i + 1:]):
+            print(perm(s[0:i] + s[i + 1:]))
+            sl.append(s[i] + j)
+    return sl
+
+
+print(perm('abc'))
+
+
+
+
+
+
+
 
 
